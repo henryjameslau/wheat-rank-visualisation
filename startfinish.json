@@ -1,1191 +1,1074 @@
-<!DOCTYPE >
-<html><head>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<link type="text/css" rel="stylesheet" href="rickshaw.css">
-<link type="text/css" rel="stylesheet" href="detail.css">
-<script src="d3.min.js"></script>
-<script src="d3.layout.min.js"></script>
-<script src="rickshaw.min.js"></script>
-<script src="Rickshaw.Graph.Axis.Y.Scaled"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
-<script src="Rickshaw.Graph.Behavior.Series.Highlight.js"></script>
-        
-<style>
-#chart_container {
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-}
-#chart {
-        position: relative;
-        left: 80px;
-}
-#y_axis {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 80px;
-}
-#y_axis_title {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 40px;
-		font-size:0.65em;
-}
-#x_axis {
-        position: relative;
-		left: 80px;
-		height: 40px;
-}
-#legend{
-position:absolute;
-left:950px;
-margin-top:-600px;
-}
-.rickshaw_graph .detail .x_label { display: none }
-rickshaw_graph .detail .item { line-height: 1.4; padding: 0.5em }
-.rickshaw_graph .detail .date { color: #a0a0a0 }
-</style>
-</head><body>
-<div id="chart_container">
-        <div id="y_axis_title">Kcal from wheat products per capita per day</div>
-		<div id="y_axis"></div>
-		<div id="chart"></div>
-		<div id="legend" style="overflow-y:scroll; height:600px;"></div> 
-		<div id="x_axis"></div>
-		
-</div>
-
-
-<script>
-
-var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum2001', interpolatedStopCount: 3 } );
-var graph = new Rickshaw.Graph( {
-        element: document.querySelector("#chart"),
-        width: 850,
-        height: 600,
-		//		yScale: ,
-        series: [    {
+    {
       color:palette.color(),
       "name" : "Afghanistan",
-      "data" : [{x:1962,y:1633},{x:2011,y:1383}],
+      "data" : "{x:1962,y:1633},{x:2011,y:1383}",
       
     },
     {
       color:palette.color(),
       "name" : "Albania",
-      "data" : [{x:1962,y:761},{x:2011,y:1072}],
+      "data" : "{x:1962,y:761},{x:2011,y:1072}",
       
     },
     {
       color:palette.color(),
       "name" : "Algeria",
-      "data" : [{x:1962,y:843},{x:2011,y:1420}],
+      "data" : "{x:1962,y:843},{x:2011,y:1420}",
       
     },
     {
       color:palette.color(),
       "name" : "Angola",
-      "data" : [{x:1962,y:74},{x:2011,y:270}],
+      "data" : "{x:1962,y:74},{x:2011,y:270}",
       
     },
     {
       color:palette.color(),
       "name" : "Antigua and Barbuda",
-      "data" : [{x:1962,y:597},{x:2011,y:491}],
+      "data" : "{x:1962,y:597},{x:2011,y:491}",
       
     },
     {
       color:palette.color(),
       "name" : "Argentina",
-      "data" : [{x:1962,y:952},{x:2011,y:872}],
+      "data" : "{x:1962,y:952},{x:2011,y:872}",
       
     },
     {
       color:palette.color(),
       "name" : "Armenia",
-      "data" : [{x:1992,y:1215},{x:2011,y:1039}],
+      "data" : "{x:1992,y:1215},{x:2011,y:1039}",
       
     },
     {
       color:palette.color(),
       "name" : "Australia",
-      "data" : [{x:1962,y:797},{x:2011,y:552}],
+      "data" : "{x:1962,y:797},{x:2011,y:552}",
       
     },
     {
       color:palette.color(),
       "name" : "Austria",
-      "data" : [{x:1962,y:553},{x:2011,y:642}],
+      "data" : "{x:1962,y:553},{x:2011,y:642}",
       
     },
     {
       color:palette.color(),
       "name" : "Azerbaijan",
-      "data" : [{x:1992,y:1372},{x:2011,y:1573}],
+      "data" : "{x:1992,y:1372},{x:2011,y:1573}",
       
     },
     {
       color:palette.color(),
       "name" : "Bahamas",
-      "data" : [{x:1962,y:450},{x:2011,y:334}],
+      "data" : "{x:1962,y:450},{x:2011,y:334}",
       
     },
     {
       color:palette.color(),
       "name" : "Bangladesh",
-      "data" : [{x:1962,y:59},{x:2011,y:148}],
+      "data" : "{x:1962,y:59},{x:2011,y:148}",
       
     },
     {
       color:palette.color(),
       "name" : "Barbados",
-      "data" : [{x:1962,y:415},{x:2011,y:570}],
+      "data" : "{x:1962,y:415},{x:2011,y:570}",
       
     },
     {
       color:palette.color(),
       "name" : "Belarus",
-      "data" : [{x:1992,y:451},{x:2011,y:515}],
+      "data" : "{x:1992,y:451},{x:2011,y:515}",
       
     },
     {
       color:palette.color(),
       "name" : "Belgium",
-      "data" : [{x:2000,y:710},{x:2011,y:851}],
+      "data" : "{x:2000,y:710},{x:2011,y:851}",
       
     },
     {
       color:palette.color(),
       "name" : "Belize",
-      "data" : [{x:1962,y:544},{x:2011,y:483}],
+      "data" : "{x:1962,y:544},{x:2011,y:483}",
       
     },
     {
       color:palette.color(),
       "name" : "Benin",
-      "data" : [{x:1962,y:15},{x:2011,y:67}],
+      "data" : "{x:1962,y:15},{x:2011,y:67}",
       
     },
     {
       color:palette.color(),
       "name" : "Bermuda",
-      "data" : [{x:1962,y:447},{x:2011,y:619}],
+      "data" : "{x:1962,y:447},{x:2011,y:619}",
       
     },
     {
       color:palette.color(),
       "name" : "Bolivia (Plurinational State of)",
-      "data" : [{x:1962,y:389},{x:2011,y:392}],
+      "data" : "{x:1962,y:389},{x:2011,y:392}",
       
     },
     {
       color:palette.color(),
       "name" : "Bosnia and Herzegovina",
-      "data" : [{x:1992,y:637},{x:2011,y:706}],
+      "data" : "{x:1992,y:637},{x:2011,y:706}",
       
     },
     {
       color:palette.color(),
       "name" : "Botswana",
-      "data" : [{x:1962,y:67},{x:2011,y:323}],
+      "data" : "{x:1962,y:67},{x:2011,y:323}",
       
     },
     {
       color:palette.color(),
       "name" : "Brazil",
-      "data" : [{x:1962,y:223},{x:2011,y:385}],
+      "data" : "{x:1962,y:223},{x:2011,y:385}",
       
     },
     {
       color:palette.color(),
       "name" : "Brunei Darussalam",
-      "data" : [{x:1962,y:144},{x:2011,y:435}],
+      "data" : "{x:1962,y:144},{x:2011,y:435}",
       
     },
     {
       color:palette.color(),
       "name" : "Bulgaria",
-      "data" : [{x:1962,y:1582},{x:2011,y:867}],
+      "data" : "{x:1962,y:1582},{x:2011,y:867}",
       
     },
     {
       color:palette.color(),
       "name" : "Burkina Faso",
-      "data" : [{x:1962,y:11},{x:2011,y:68}],
+      "data" : "{x:1962,y:11},{x:2011,y:68}",
       
     },
     {
       color:palette.color(),
       "name" : "Cabo Verde",
-      "data" : [{x:1962,y:83},{x:2011,y:298}],
+      "data" : "{x:1962,y:83},{x:2011,y:298}",
       
     },
     {
       color:palette.color(),
       "name" : "Cambodia",
-      "data" : [{x:1962,y:22},{x:2011,y:19}],
+      "data" : "{x:1962,y:22},{x:2011,y:19}",
       
     },
     {
       color:palette.color(),
       "name" : "Cameroon",
-      "data" : [{x:1962,y:28},{x:2011,y:145}],
+      "data" : "{x:1962,y:28},{x:2011,y:145}",
       
     },
     {
       color:palette.color(),
       "name" : "Canada",
-      "data" : [{x:1962,y:580},{x:2011,y:532}],
+      "data" : "{x:1962,y:580},{x:2011,y:532}",
       
     },
     {
       color:palette.color(),
       "name" : "Central African Republic",
-      "data" : [{x:1962,y:21},{x:2011,y:69}],
+      "data" : "{x:1962,y:21},{x:2011,y:69}",
       
     },
     {
       color:palette.color(),
       "name" : "Chad",
-      "data" : [{x:1962,y:12},{x:2011,y:70}],
+      "data" : "{x:1962,y:12},{x:2011,y:70}",
       
     },
     {
       color:palette.color(),
       "name" : "Chile",
-      "data" : [{x:1962,y:1049},{x:2011,y:873}],
+      "data" : "{x:1962,y:1049},{x:2011,y:873}",
       
     },
     {
       color:palette.color(),
       "name" : "China",
-      "data" : [{x:1962,y:196},{x:2011,y:548}],
+      "data" : "{x:1962,y:196},{x:2011,y:548}",
       
     },
     {
       color:palette.color(),
       "name" : "China, Hong Kong SAR",
-      "data" : [{x:1962,y:279},{x:2011,y:415}],
+      "data" : "{x:1962,y:279},{x:2011,y:415}",
       
     },
     {
       color:palette.color(),
       "name" : "China, Macao SAR",
-      "data" : [{x:1962,y:383},{x:2011,y:399}],
+      "data" : "{x:1962,y:383},{x:2011,y:399}",
       
     },
     {
       color:palette.color(),
       "name" : "China, mainland",
-      "data" : [{x:1962,y:195},{x:2011,y:552}],
+      "data" : "{x:1962,y:195},{x:2011,y:552}",
       
     },
     {
       color:palette.color(),
       "name" : "China, Taiwan Province of",
-      "data" : [{x:1962,y:236},{x:2011,y:361}],
+      "data" : "{x:1962,y:236},{x:2011,y:361}",
       
     },
     {
       color:palette.color(),
       "name" : "Colombia",
-      "data" : [{x:1962,y:124},{x:2011,y:250}],
+      "data" : "{x:1962,y:124},{x:2011,y:250}",
       
     },
     {
       color:palette.color(),
       "name" : "Congo",
-      "data" : [{x:1962,y:101},{x:2011,y:316}],
+      "data" : "{x:1962,y:101},{x:2011,y:316}",
       
     },
     {
       color:palette.color(),
       "name" : "Costa Rica",
-      "data" : [{x:1962,y:282},{x:2011,y:322}],
+      "data" : "{x:1962,y:282},{x:2011,y:322}",
       
     },
     {
       color:palette.color(),
-      "name" : "Cote d'Ivoire",
-      "data" : [{x:1962,y:13},{x:2011,y:163}],
+      "name" : "Côte d'Ivoire",
+      "data" : "{x:1962,y:13},{x:2011,y:163}",
       
     },
     {
       color:palette.color(),
       "name" : "Croatia",
-      "data" : [{x:1992,y:661},{x:2011,y:802}],
+      "data" : "{x:1992,y:661},{x:2011,y:802}",
       
     },
     {
       color:palette.color(),
       "name" : "Cuba",
-      "data" : [{x:1962,y:387},{x:2011,y:374}],
+      "data" : "{x:1962,y:387},{x:2011,y:374}",
       
     },
     {
       color:palette.color(),
       "name" : "Cyprus",
-      "data" : [{x:1962,y:888},{x:2011,y:620}],
+      "data" : "{x:1962,y:888},{x:2011,y:620}",
       
     },
     {
       color:palette.color(),
       "name" : "Czech Republic",
-      "data" : [{x:1993,y:654},{x:2011,y:778}],
+      "data" : "{x:1993,y:654},{x:2011,y:778}",
       
     },
     {
       color:palette.color(),
       "name" : "Democratic People's Republic of Korea",
-      "data" : [{x:1962,y:69},{x:2011,y:172}],
+      "data" : "{x:1962,y:69},{x:2011,y:172}",
       
     },
     {
       color:palette.color(),
       "name" : "Denmark",
-      "data" : [{x:1962,y:421},{x:2011,y:597}],
+      "data" : "{x:1962,y:421},{x:2011,y:597}",
       
     },
     {
       color:palette.color(),
       "name" : "Djibouti",
-      "data" : [{x:1962,y:295},{x:2011,y:929}],
+      "data" : "{x:1962,y:295},{x:2011,y:929}",
       
     },
     {
       color:palette.color(),
       "name" : "Dominica",
-      "data" : [{x:1962,y:503},{x:2011,y:585}],
+      "data" : "{x:1962,y:503},{x:2011,y:585}",
       
     },
     {
       color:palette.color(),
       "name" : "Dominican Republic",
-      "data" : [{x:1962,y:122},{x:2011,y:223}],
+      "data" : "{x:1962,y:122},{x:2011,y:223}",
       
     },
     {
       color:palette.color(),
       "name" : "Ecuador",
-      "data" : [{x:1962,y:149},{x:2011,y:303}],
+      "data" : "{x:1962,y:149},{x:2011,y:303}",
       
     },
     {
       color:palette.color(),
       "name" : "Egypt",
-      "data" : [{x:1962,y:695},{x:2011,y:1169}],
+      "data" : "{x:1962,y:695},{x:2011,y:1169}",
       
     },
     {
       color:palette.color(),
       "name" : "El Salvador",
-      "data" : [{x:1962,y:101},{x:2011,y:247}],
+      "data" : "{x:1962,y:101},{x:2011,y:247}",
       
     },
     {
       color:palette.color(),
       "name" : "Estonia",
-      "data" : [{x:1992,y:549},{x:2011,y:765}],
+      "data" : "{x:1992,y:549},{x:2011,y:765}",
       
     },
     {
       color:palette.color(),
       "name" : "Ethiopia",
-      "data" : [{x:1993,y:197},{x:2011,y:288}],
+      "data" : "{x:1993,y:197},{x:2011,y:288}",
       
     },
     {
       color:palette.color(),
       "name" : "Fiji",
-      "data" : [{x:1962,y:582},{x:2011,y:622}],
+      "data" : "{x:1962,y:582},{x:2011,y:622}",
       
     },
     {
       color:palette.color(),
       "name" : "Finland",
-      "data" : [{x:1962,y:588},{x:2011,y:641}],
+      "data" : "{x:1962,y:588},{x:2011,y:641}",
       
     },
     {
       color:palette.color(),
       "name" : "France",
-      "data" : [{x:1962,y:913},{x:2011,y:795}],
+      "data" : "{x:1962,y:913},{x:2011,y:795}",
       
     },
     {
       color:palette.color(),
       "name" : "French Polynesia",
-      "data" : [{x:1962,y:789},{x:2011,y:513}],
+      "data" : "{x:1962,y:789},{x:2011,y:513}",
       
     },
     {
       color:palette.color(),
       "name" : "Gabon",
-      "data" : [{x:1962,y:78},{x:2011,y:469}],
+      "data" : "{x:1962,y:78},{x:2011,y:469}",
       
     },
     {
       color:palette.color(),
       "name" : "Gambia",
-      "data" : [{x:1962,y:51},{x:2011,y:346}],
+      "data" : "{x:1962,y:51},{x:2011,y:346}",
       
     },
     {
       color:palette.color(),
       "name" : "Georgia",
-      "data" : [{x:1992,y:854},{x:2011,y:1164}],
+      "data" : "{x:1992,y:854},{x:2011,y:1164}",
       
     },
     {
       color:palette.color(),
       "name" : "Germany",
-      "data" : [{x:1962,y:421},{x:2011,y:664}],
+      "data" : "{x:1962,y:421},{x:2011,y:664}",
       
     },
     {
       color:palette.color(),
       "name" : "Ghana",
-      "data" : [{x:1962,y:69},{x:2011,y:139}],
+      "data" : "{x:1962,y:69},{x:2011,y:139}",
       
     },
     {
       color:palette.color(),
       "name" : "Greece",
-      "data" : [{x:1962,y:1205},{x:2011,y:863}],
+      "data" : "{x:1962,y:1205},{x:2011,y:863}",
       
     },
     {
       color:palette.color(),
       "name" : "Grenada",
-      "data" : [{x:1962,y:470},{x:2011,y:408}],
+      "data" : "{x:1962,y:470},{x:2011,y:408}",
       
     },
     {
       color:palette.color(),
       "name" : "Guatemala",
-      "data" : [{x:1962,y:134},{x:2011,y:268}],
+      "data" : "{x:1962,y:134},{x:2011,y:268}",
       
     },
     {
       color:palette.color(),
       "name" : "Guinea",
-      "data" : [{x:1962,y:30},{x:2011,y:126}],
+      "data" : "{x:1962,y:30},{x:2011,y:126}",
       
     },
     {
       color:palette.color(),
       "name" : "Guinea-Bissau",
-      "data" : [{x:1962,y:20},{x:2011,y:85}],
+      "data" : "{x:1962,y:20},{x:2011,y:85}",
       
     },
     {
       color:palette.color(),
       "name" : "Guyana",
-      "data" : [{x:1962,y:469},{x:2011,y:467}],
+      "data" : "{x:1962,y:469},{x:2011,y:467}",
       
     },
     {
       color:palette.color(),
       "name" : "Haiti",
-      "data" : [{x:1962,y:78},{x:2011,y:136}],
+      "data" : "{x:1962,y:78},{x:2011,y:136}",
       
     },
     {
       color:palette.color(),
       "name" : "Honduras",
-      "data" : [{x:1962,y:84},{x:2011,y:295}],
+      "data" : "{x:1962,y:84},{x:2011,y:295}",
       
     },
     {
       color:palette.color(),
       "name" : "Hungary",
-      "data" : [{x:1962,y:1170},{x:2011,y:705}],
+      "data" : "{x:1962,y:1170},{x:2011,y:705}",
       
     },
     {
       color:palette.color(),
       "name" : "Iceland",
-      "data" : [{x:1962,y:496},{x:2011,y:571}],
+      "data" : "{x:1962,y:496},{x:2011,y:571}",
       
     },
     {
       color:palette.color(),
       "name" : "India",
-      "data" : [{x:1962,y:254},{x:2011,y:502}],
+      "data" : "{x:1962,y:254},{x:2011,y:502}",
       
     },
     {
       color:palette.color(),
       "name" : "Indonesia",
-      "data" : [{x:1962,y:7},{x:2011,y:169}],
+      "data" : "{x:1962,y:7},{x:2011,y:169}",
       
     },
     {
       color:palette.color(),
       "name" : "Iran (Islamic Republic of)",
-      "data" : [{x:1962,y:817},{x:2011,y:1189}],
+      "data" : "{x:1962,y:817},{x:2011,y:1189}",
       
     },
     {
       color:palette.color(),
       "name" : "Iraq",
-      "data" : [{x:1962,y:672},{x:2011,y:1166}],
+      "data" : "{x:1962,y:672},{x:2011,y:1166}",
       
     },
     {
       color:palette.color(),
       "name" : "Ireland",
-      "data" : [{x:1962,y:959},{x:2011,y:911}],
+      "data" : "{x:1962,y:959},{x:2011,y:911}",
       
     },
     {
       color:palette.color(),
       "name" : "Israel",
-      "data" : [{x:1962,y:1079},{x:2011,y:943}],
+      "data" : "{x:1962,y:1079},{x:2011,y:943}",
       
     },
     {
       color:palette.color(),
       "name" : "Italy",
-      "data" : [{x:1962,y:1182},{x:2011,y:1033}],
+      "data" : "{x:1962,y:1182},{x:2011,y:1033}",
       
     },
     {
       color:palette.color(),
       "name" : "Jamaica",
-      "data" : [{x:1962,y:564},{x:2011,y:572}],
+      "data" : "{x:1962,y:564},{x:2011,y:572}",
       
     },
     {
       color:palette.color(),
       "name" : "Japan",
-      "data" : [{x:1962,y:252},{x:2011,y:392}],
+      "data" : "{x:1962,y:252},{x:2011,y:392}",
       
     },
     {
       color:palette.color(),
       "name" : "Jordan",
-      "data" : [{x:1962,y:1040},{x:2011,y:1200}],
+      "data" : "{x:1962,y:1040},{x:2011,y:1200}",
       
     },
     {
       color:palette.color(),
       "name" : "Kazakhstan",
-      "data" : [{x:1992,y:1058},{x:2011,y:737}],
+      "data" : "{x:1992,y:1058},{x:2011,y:737}",
       
     },
     {
       color:palette.color(),
       "name" : "Kenya",
-      "data" : [{x:1962,y:77},{x:2011,y:255}],
+      "data" : "{x:1962,y:77},{x:2011,y:255}",
       
     },
     {
       color:palette.color(),
       "name" : "Kiribati",
-      "data" : [{x:1962,y:335},{x:2011,y:390}],
+      "data" : "{x:1962,y:335},{x:2011,y:390}",
       
     },
     {
       color:palette.color(),
       "name" : "Kuwait",
-      "data" : [{x:1962,y:880},{x:2011,y:822}],
+      "data" : "{x:1962,y:880},{x:2011,y:822}",
       
     },
     {
       color:palette.color(),
       "name" : "Kyrgyzstan",
-      "data" : [{x:1992,y:1322},{x:2011,y:1076}],
+      "data" : "{x:1992,y:1322},{x:2011,y:1076}",
       
     },
     {
       color:palette.color(),
       "name" : "Lao People's Democratic Republic",
-      "data" : [{x:1962,y:8},{x:2011,y:15}],
+      "data" : "{x:1962,y:8},{x:2011,y:15}",
       
     },
     {
       color:palette.color(),
       "name" : "Latvia",
-      "data" : [{x:1992,y:914},{x:2011,y:604}],
+      "data" : "{x:1992,y:914},{x:2011,y:604}",
       
     },
     {
       color:palette.color(),
       "name" : "Lebanon",
-      "data" : [{x:1962,y:1123},{x:2011,y:997}],
+      "data" : "{x:1962,y:1123},{x:2011,y:997}",
       
     },
     {
       color:palette.color(),
       "name" : "Lesotho",
-      "data" : [{x:1962,y:398},{x:2011,y:374}],
+      "data" : "{x:1962,y:398},{x:2011,y:374}",
       
     },
     {
       color:palette.color(),
       "name" : "Liberia",
-      "data" : [{x:1962,y:30},{x:2011,y:145}],
+      "data" : "{x:1962,y:30},{x:2011,y:145}",
       
     },
     {
       color:palette.color(),
       "name" : "Libya",
-      "data" : [{x:1962,y:615},{x:2011,y:1222}],
+      "data" : "{x:1962,y:615},{x:2011,y:1222}",
       
     },
     {
       color:palette.color(),
       "name" : "Lithuania",
-      "data" : [{x:1992,y:943},{x:2011,y:890}],
+      "data" : "{x:1992,y:943},{x:2011,y:890}",
       
     },
     {
       color:palette.color(),
       "name" : "Luxembourg",
-      "data" : [{x:2000,y:626},{x:2011,y:764}],
+      "data" : "{x:2000,y:626},{x:2011,y:764}",
       
     },
     {
       color:palette.color(),
       "name" : "Madagascar",
-      "data" : [{x:1962,y:32},{x:2011,y:64}],
+      "data" : "{x:1962,y:32},{x:2011,y:64}",
       
     },
     {
       color:palette.color(),
       "name" : "Malawi",
-      "data" : [{x:1962,y:14},{x:2011,y:71}],
+      "data" : "{x:1962,y:14},{x:2011,y:71}",
       
     },
     {
       color:palette.color(),
       "name" : "Malaysia",
-      "data" : [{x:1962,y:191},{x:2011,y:397}],
+      "data" : "{x:1962,y:191},{x:2011,y:397}",
       
     },
     {
       color:palette.color(),
       "name" : "Maldives",
-      "data" : [{x:1962,y:115},{x:2011,y:562}],
+      "data" : "{x:1962,y:115},{x:2011,y:562}",
       
     },
     {
       color:palette.color(),
       "name" : "Mali",
-      "data" : [{x:1962,y:13},{x:2011,y:91}],
+      "data" : "{x:1962,y:13},{x:2011,y:91}",
       
     },
     {
       color:palette.color(),
       "name" : "Malta",
-      "data" : [{x:1962,y:1195},{x:2011,y:1000}],
+      "data" : "{x:1962,y:1195},{x:2011,y:1000}",
       
     },
     {
       color:palette.color(),
       "name" : "Mauritania",
-      "data" : [{x:1962,y:97},{x:2011,y:789}],
+      "data" : "{x:1962,y:97},{x:2011,y:789}",
       
     },
     {
       color:palette.color(),
       "name" : "Mauritius",
-      "data" : [{x:1962,y:363},{x:2011,y:885}],
+      "data" : "{x:1962,y:363},{x:2011,y:885}",
       
     },
     {
       color:palette.color(),
       "name" : "Mexico",
-      "data" : [{x:1962,y:210},{x:2011,y:242}],
+      "data" : "{x:1962,y:210},{x:2011,y:242}",
       
     },
     {
       color:palette.color(),
       "name" : "Mongolia",
-      "data" : [{x:1962,y:834},{x:2011,y:985}],
+      "data" : "{x:1962,y:834},{x:2011,y:985}",
       
     },
     {
       color:palette.color(),
       "name" : "Montenegro",
-      "data" : [{x:2006,y:1249},{x:2011,y:1115}],
+      "data" : "{x:2006,y:1249},{x:2011,y:1115}",
       
     },
     {
       color:palette.color(),
       "name" : "Morocco",
-      "data" : [{x:1962,y:670},{x:2011,y:1373}],
+      "data" : "{x:1962,y:670},{x:2011,y:1373}",
       
     },
     {
       color:palette.color(),
       "name" : "Mozambique",
-      "data" : [{x:1962,y:40},{x:2011,y:140}],
+      "data" : "{x:1962,y:40},{x:2011,y:140}",
       
     },
     {
       color:palette.color(),
       "name" : "Myanmar",
-      "data" : [{x:1962,y:17},{x:2011,y:46}],
+      "data" : "{x:1962,y:17},{x:2011,y:46}",
       
     },
     {
       color:palette.color(),
       "name" : "Namibia",
-      "data" : [{x:1962,y:95},{x:2011,y:244}],
+      "data" : "{x:1962,y:95},{x:2011,y:244}",
       
     },
     {
       color:palette.color(),
       "name" : "Nepal",
-      "data" : [{x:1962,y:103},{x:2011,y:348}],
+      "data" : "{x:1962,y:103},{x:2011,y:348}",
       
     },
     {
       color:palette.color(),
       "name" : "Netherlands",
-      "data" : [{x:1962,y:664},{x:2011,y:566}],
+      "data" : "{x:1962,y:664},{x:2011,y:566}",
       
     },
     {
       color:palette.color(),
       "name" : "New Caledonia",
-      "data" : [{x:1962,y:582},{x:2011,y:645}],
+      "data" : "{x:1962,y:582},{x:2011,y:645}",
       
     },
     {
       color:palette.color(),
       "name" : "New Zealand",
-      "data" : [{x:1962,y:665},{x:2011,y:610}],
+      "data" : "{x:1962,y:665},{x:2011,y:610}",
       
     },
     {
       color:palette.color(),
       "name" : "Nicaragua",
-      "data" : [{x:1962,y:91},{x:2011,y:207}],
+      "data" : "{x:1962,y:91},{x:2011,y:207}",
       
     },
     {
       color:palette.color(),
       "name" : "Niger",
-      "data" : [{x:1962,y:9},{x:2011,y:28}],
+      "data" : "{x:1962,y:9},{x:2011,y:28}",
       
     },
     {
       color:palette.color(),
       "name" : "Nigeria",
-      "data" : [{x:1962,y:19},{x:2011,y:181}],
+      "data" : "{x:1962,y:19},{x:2011,y:181}",
       
     },
     {
       color:palette.color(),
       "name" : "Norway",
-      "data" : [{x:1962,y:663},{x:2011,y:803}],
+      "data" : "{x:1962,y:663},{x:2011,y:803}",
       
     },
     {
       color:palette.color(),
       "name" : "Occupied Palestinian Territory",
-      "data" : [{x:1996,y:918},{x:2011,y:840}],
+      "data" : "{x:1996,y:918},{x:2011,y:840}",
       
     },
     {
       color:palette.color(),
       "name" : "Pakistan",
-      "data" : [{x:1962,y:772},{x:2011,y:904}],
+      "data" : "{x:1962,y:772},{x:2011,y:904}",
       
     },
     {
       color:palette.color(),
       "name" : "Panama",
-      "data" : [{x:1962,y:214},{x:2011,y:308}],
+      "data" : "{x:1962,y:214},{x:2011,y:308}",
       
     },
     {
       color:palette.color(),
       "name" : "Paraguay",
-      "data" : [{x:1962,y:339},{x:2011,y:236}],
+      "data" : "{x:1962,y:339},{x:2011,y:236}",
       
     },
     {
       color:palette.color(),
       "name" : "Peru",
-      "data" : [{x:1962,y:384},{x:2011,y:342}],
+      "data" : "{x:1962,y:384},{x:2011,y:342}",
       
     },
     {
       color:palette.color(),
       "name" : "Philippines",
-      "data" : [{x:1962,y:92},{x:2011,y:110}],
+      "data" : "{x:1962,y:92},{x:2011,y:110}",
       
     },
     {
       color:palette.color(),
       "name" : "Poland",
-      "data" : [{x:1962,y:674},{x:2011,y:879}],
+      "data" : "{x:1962,y:674},{x:2011,y:879}",
       
     },
     {
       color:palette.color(),
       "name" : "Portugal",
-      "data" : [{x:1962,y:595},{x:2011,y:658}],
+      "data" : "{x:1962,y:595},{x:2011,y:658}",
       
     },
     {
       color:palette.color(),
       "name" : "Republic of Korea",
-      "data" : [{x:1962,y:123},{x:2011,y:405}],
+      "data" : "{x:1962,y:123},{x:2011,y:405}",
       
     },
     {
       color:palette.color(),
       "name" : "Republic of Moldova",
-      "data" : [{x:1992,y:654},{x:2011,y:397}],
+      "data" : "{x:1992,y:654},{x:2011,y:397}",
       
     },
     {
       color:palette.color(),
       "name" : "Romania",
-      "data" : [{x:1962,y:1206},{x:2011,y:973}],
+      "data" : "{x:1962,y:1206},{x:2011,y:973}",
       
     },
     {
       color:palette.color(),
       "name" : "Russian Federation",
-      "data" : [{x:1992,y:1005},{x:2011,y:1018}],
+      "data" : "{x:1992,y:1005},{x:2011,y:1018}",
       
     },
     {
       color:palette.color(),
       "name" : "Rwanda",
-      "data" : [{x:1962,y:3},{x:2011,y:104}],
+      "data" : "{x:1962,y:3},{x:2011,y:104}",
       
     },
     {
       color:palette.color(),
       "name" : "Saint Kitts and Nevis",
-      "data" : [{x:1962,y:488},{x:2011,y:429}],
+      "data" : "{x:1962,y:488},{x:2011,y:429}",
       
     },
     {
       color:palette.color(),
       "name" : "Saint Lucia",
-      "data" : [{x:1962,y:426},{x:2011,y:640}],
+      "data" : "{x:1962,y:426},{x:2011,y:640}",
       
     },
     {
       color:palette.color(),
       "name" : "Saint Vincent and the Grenadines",
-      "data" : [{x:1962,y:531},{x:2011,y:510}],
+      "data" : "{x:1962,y:531},{x:2011,y:510}",
       
     },
     {
       color:palette.color(),
       "name" : "Samoa",
-      "data" : [{x:1962,y:221},{x:2011,y:408}],
+      "data" : "{x:1962,y:221},{x:2011,y:408}",
       
     },
     {
       color:palette.color(),
       "name" : "Sao Tome and Principe",
-      "data" : [{x:1962,y:192},{x:2011,y:375}],
+      "data" : "{x:1962,y:192},{x:2011,y:375}",
       
     },
     {
       color:palette.color(),
       "name" : "Saudi Arabia",
-      "data" : [{x:1962,y:315},{x:2011,y:758}],
+      "data" : "{x:1962,y:315},{x:2011,y:758}",
       
     },
     {
       color:palette.color(),
       "name" : "Senegal",
-      "data" : [{x:1962,y:74},{x:2011,y:261}],
+      "data" : "{x:1962,y:74},{x:2011,y:261}",
       
     },
     {
       color:palette.color(),
       "name" : "Serbia",
-      "data" : [{x:2006,y:789},{x:2011,y:780}],
+      "data" : "{x:2006,y:789},{x:2011,y:780}",
       
     },
     {
       color:palette.color(),
       "name" : "Serbia and Montenegro",
-      "data" : [{x:1992,y:842},{x:2011,y:496}],
+      "data" : "{x:1992,y:842},{x:2011,y:496}",
       
     },
     {
       color:palette.color(),
       "name" : "Sierra Leone",
-      "data" : [{x:1962,y:63},{x:2011,y:97}],
+      "data" : "{x:1962,y:63},{x:2011,y:97}",
       
     },
     {
       color:palette.color(),
       "name" : "Slovakia",
-      "data" : [{x:1993,y:638},{x:2011,y:894}],
+      "data" : "{x:1993,y:638},{x:2011,y:894}",
       
     },
     {
       color:palette.color(),
       "name" : "Slovenia",
-      "data" : [{x:1992,y:666},{x:2011,y:786}],
+      "data" : "{x:1992,y:666},{x:2011,y:786}",
       
     },
     {
       color:palette.color(),
       "name" : "Solomon Islands",
-      "data" : [{x:1962,y:100},{x:2011,y:280}],
+      "data" : "{x:1962,y:100},{x:2011,y:280}",
       
     },
     {
       color:palette.color(),
       "name" : "Somalia",
-      "data" : [{x:1962,y:45},{x:2011,y:173}],
+      "data" : "{x:1962,y:45},{x:2011,y:173}",
       
     },
     {
       color:palette.color(),
       "name" : "South Africa",
-      "data" : [{x:1962,y:366},{x:2011,y:495}],
+      "data" : "{x:1962,y:366},{x:2011,y:495}",
       
     },
     {
       color:palette.color(),
       "name" : "Spain",
-      "data" : [{x:1962,y:1037},{x:2011,y:562}],
+      "data" : "{x:1962,y:1037},{x:2011,y:562}",
       
     },
     {
       color:palette.color(),
       "name" : "Sri Lanka",
-      "data" : [{x:1962,y:141},{x:2011,y:274}],
+      "data" : "{x:1962,y:141},{x:2011,y:274}",
       
     },
     {
       color:palette.color(),
       "name" : "Sudan (former)",
-      "data" : [{x:1962,y:72},{x:2011,y:304}],
+      "data" : "{x:1962,y:72},{x:2011,y:304}",
       
     },
     {
       color:palette.color(),
       "name" : "Suriname",
-      "data" : [{x:1962,y:353},{x:2011,y:466}],
+      "data" : "{x:1962,y:353},{x:2011,y:466}",
       
     },
     {
       color:palette.color(),
       "name" : "Swaziland",
-      "data" : [{x:1970,y:1},{x:2011,y:372}],
+      "data" : "{x:1970,y:1},{x:2011,y:372}",
       
     },
     {
       color:palette.color(),
       "name" : "Sweden",
-      "data" : [{x:1962,y:450},{x:2011,y:576}],
+      "data" : "{x:1962,y:450},{x:2011,y:576}",
       
     },
     {
       color:palette.color(),
       "name" : "Switzerland",
-      "data" : [{x:1962,y:745},{x:2011,y:652}],
+      "data" : "{x:1962,y:745},{x:2011,y:652}",
       
     },
     {
       color:palette.color(),
       "name" : "Syrian Arab Republic",
-      "data" : [{x:1962,y:994},{x:2011,y:1175}],
+      "data" : "{x:1962,y:994},{x:2011,y:1175}",
       
     },
     {
       color:palette.color(),
       "name" : "Tajikistan",
-      "data" : [{x:1992,y:998},{x:2011,y:1023}],
+      "data" : "{x:1992,y:998},{x:2011,y:1023}",
       
     },
     {
       color:palette.color(),
       "name" : "Thailand",
-      "data" : [{x:1962,y:6},{x:2011,y:83}],
+      "data" : "{x:1962,y:6},{x:2011,y:83}",
       
     },
     {
       color:palette.color(),
       "name" : "The former Yugoslav Republic of Macedonia",
-      "data" : [{x:1992,y:1044},{x:2011,y:762}],
+      "data" : "{x:1992,y:1044},{x:2011,y:762}",
       
     },
     {
       color:palette.color(),
       "name" : "Timor-Leste",
-      "data" : [{x:1962,y:20},{x:2011,y:77}],
+      "data" : "{x:1962,y:20},{x:2011,y:77}",
       
     },
     {
       color:palette.color(),
       "name" : "Togo",
-      "data" : [{x:1962,y:23},{x:2011,y:88}],
+      "data" : "{x:1962,y:23},{x:2011,y:88}",
       
     },
     {
       color:palette.color(),
       "name" : "Trinidad and Tobago",
-      "data" : [{x:1962,y:655},{x:2011,y:682}],
+      "data" : "{x:1962,y:655},{x:2011,y:682}",
       
     },
     {
       color:palette.color(),
       "name" : "Tunisia",
-      "data" : [{x:1962,y:1233},{x:2011,y:1632}],
+      "data" : "{x:1962,y:1233},{x:2011,y:1632}",
       
     },
     {
       color:palette.color(),
       "name" : "Turkey",
-      "data" : [{x:1962,y:1253},{x:2011,y:1311}],
+      "data" : "{x:1962,y:1253},{x:2011,y:1311}",
       
     },
     {
       color:palette.color(),
       "name" : "Turkmenistan",
-      "data" : [{x:1992,y:1374},{x:2011,y:1464}],
+      "data" : "{x:1992,y:1374},{x:2011,y:1464}",
       
     },
     {
       color:palette.color(),
       "name" : "Uganda",
-      "data" : [{x:1962,y:23},{x:2011,y:85}],
+      "data" : "{x:1962,y:23},{x:2011,y:85}",
       
     },
     {
       color:palette.color(),
       "name" : "Ukraine",
-      "data" : [{x:1992,y:1165},{x:2011,y:824}],
+      "data" : "{x:1992,y:1165},{x:2011,y:824}",
       
     },
     {
       color:palette.color(),
       "name" : "United Arab Emirates",
-      "data" : [{x:1962,y:535},{x:2011,y:769}],
+      "data" : "{x:1962,y:535},{x:2011,y:769}",
       
     },
     {
       color:palette.color(),
       "name" : "United Kingdom",
-      "data" : [{x:1962,y:714},{x:2011,y:750}],
+      "data" : "{x:1962,y:714},{x:2011,y:750}",
       
     },
     {
       color:palette.color(),
       "name" : "United Republic of Tanzania",
-      "data" : [{x:1962,y:38},{x:2011,y:116}],
+      "data" : "{x:1962,y:38},{x:2011,y:116}",
       
     },
     {
       color:palette.color(),
       "name" : "United States of America",
-      "data" : [{x:1962,y:492},{x:2011,y:590}],
+      "data" : "{x:1962,y:492},{x:2011,y:590}",
       
     },
     {
       color:palette.color(),
       "name" : "Uruguay",
-      "data" : [{x:1962,y:677},{x:2011,y:815}],
+      "data" : "{x:1962,y:677},{x:2011,y:815}",
       
     },
     {
       color:palette.color(),
       "name" : "Uzbekistan",
-      "data" : [{x:1992,y:1405},{x:2011,y:1329}],
+      "data" : "{x:1992,y:1405},{x:2011,y:1329}",
       
     },
     {
       color:palette.color(),
       "name" : "Vanuatu",
-      "data" : [{x:1962,y:168},{x:2011,y:343}],
+      "data" : "{x:1962,y:168},{x:2011,y:343}",
       
     },
     {
       color:palette.color(),
       "name" : "Venezuela (Bolivarian Republic of)",
-      "data" : [{x:1962,y:291},{x:2011,y:407}],
+      "data" : "{x:1962,y:291},{x:2011,y:407}",
       
     },
     {
       color:palette.color(),
       "name" : "Viet Nam",
-      "data" : [{x:1962,y:24},{x:2011,y:66}],
+      "data" : "{x:1962,y:24},{x:2011,y:66}",
       
     },
     {
       color:palette.color(),
       "name" : "Yemen",
-      "data" : [{x:1962,y:104},{x:2011,y:912}],
+      "data" : "{x:1962,y:104},{x:2011,y:912}",
       
     },
     {
       color:palette.color(),
       "name" : "Zambia",
-      "data" : [{x:1962,y:45},{x:2011,y:88}],
+      "data" : "{x:1962,y:45},{x:2011,y:88}",
       
     },
     {
       color:palette.color(),
       "name" : "Zimbabwe",
-      "data" : [{x:1962,y:114},{x:2011,y:231}],
+      "data" : "{x:1962,y:114},{x:2011,y:231}",
       
-    }]
-});
-
-var x_axis = new Rickshaw.Graph.Axis.X( {
-	graph: graph,
-	orientation: 'bottom',
-	element: document.getElementById('x_axis'),
-} );
-
-var y_axis = new Rickshaw.Graph.Axis.Y( {
-     graph: graph,
-       orientation: 'left',
-	   element: document.getElementById('y_axis'),
-
-} );
-
-var legend = new Rickshaw.Graph.Legend( {
-       element: document.querySelector('#legend'),
-       graph: graph
-} );
-
-graph.setRenderer('line');
-
-var hoverDetail = new Rickshaw.Graph.HoverDetail( {
-	graph: graph,
-//	formatter: function(series, x, y) {
-//		var content = series.name + ": " + parseInt(x)+", " + parseInt(y);
-//		return content;
-//	}
-} );
-
-graph.render();
-
-var shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
-        graph: graph,
-        legend: legend
-} );
-
-var highlighter = new Rickshaw.Graph.Behavior.Series.Highlight( {
-        graph: graph,
-        legend: legend
-} );
-</script>
-<h1>How to read the graph</h1>
-<p>This graph plots the kcal from wheat per capita per day for different countries from the earliest year than data exists in the FAO database to 2011 as a single line. The data varies over time but using a straight line shows trends over time. Hover over lines to see country and data points. Hover over countries in the legend to highlight them in the graph. Click on the countries name to isolate that particular country. Click on the name again to show all countries. Click on the tick to show/hide certain countries. Scroll up and down the legend to see all the available countries.</p>
-<h4>Credits</h4>
-Uses the <a href="http://code.shutterstock.com/rickshaw/">rickshaw</a> javascript library and inspired by <a href="http://kenandavis.com/projects/a_season_visualized/">Kenan Davis' premier league visualisation</a>.
-<h4>Source of data</h4>
-<a href="http://faostat3.fao.org/download/FB/FBS/E">Wheat food balance sheet from FAOStat</a>
-</body></html>
+    }
